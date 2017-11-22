@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>One-Click Shadowsocks on Digital Ocean</title>
+  </head>
+  <body>
+    <div class="container">
+        <div class="page-header">
+            <img src="img/Shadowsocks_logo.png" width=100 height=100 />
+            <h1>One-Click Shadowsocks on Digital Ocean</h1>
+        </div>
+    </div>
+    <div class="container">
+        <div class="jumbotron">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <form id="droplets">
+                        <label>Region</label>
+                        <select id="region">
+                          <option value="nyc1">NYC 1</option>
+                          <option value="nyc3">NYC 3</option>
+                          <option value="sfo1">San Francisco 1</option>
+                          <option value="sfo2">San Francisco 2</option>
+                          <option value="ams2">Amsterdam 2</option>
+                          <option value="ams3">Amsterdam 3</option>
+                          <option value="spg1">Singapore 1</option>
+                          <option value="lon1">London 1</option>
+                          <option value="fra1">Frankfurt 1</option>
+                          <option value="tor1">Toronto 1</option>
+                          <option value="blr1">Bangalore 1</option>
+                        </select>   
+                        <br />
+                        <label>Size</label>
+                        <select id="size">
+                          <option value="512mb">512MB ($5/m)</option>
+                          <option value="1gb">1GB ($10/m)</option>
+                          <option value="2gb">2GB ($20/m)</option>
+                          <option value="4gb">4GB ($40/m)</option>
+                          <option value="8gb">8GB ($80/m)</option>
+                          <option value="16gb">16GB ($160/m)</option>
+                        </select> 
+                        <br />
+                        <label>API Token</label>
+                        <input id="accessToken" type="text" lenght="200" />
+                        <br />
+                         <button class="btn btn-default" type="button" onClick=createDroplet(this.form.region.value,this.form.size.value,this.form.accessToken.value)>
+                                        <i class="glyphicon glyphicon-play"></i>
+                         </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        function createDroplet(region, size, accessToken) {
+            console.log(Setting up a " " + size + " Droplet in " + region);
+               
+            $.post({
+                url: "https://api.digitalocean.com/v2/droplets/",
+                xhrFields: {
+                    withCredentials: true
+                },
+                contentType: "application/json",
+                headers: {
+                    'Authorization': 'Bearer ' + accessToken
+                },
+                data: JSON.stringify({
+                "name" : "shadowsocks",
+                "region" : region,
+                "size" : size,
+                "image" : "ubuntu-16-04-x64",
+                "ipv6": true,
+                "user_data" : "#!/bin/bash\nwget https://repat.de/setup.sh && chmod +x setup.sh && sh setup.sh"                       
+                }),
+                success: function (response) {
+                    console.log(response);
+                    //alert(response);
+                    alert("Droplet created.");
+                },
+                error: function (xhr, status) {
+                    alert(status);
+                    console.log(xhr);
+                }
+            });
+        };
+    </script>
+  </body>
+</html>
