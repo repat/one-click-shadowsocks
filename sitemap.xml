@@ -1,0 +1,25 @@
+
+<?xml version='1.0' encoding='UTF-8'?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+ http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">  
+     <url>
+        <loc>https://oneclickshadowsocks.de/index.html</loc>
+        <lastmod>2017-11-22T11:25:40+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>https://oneclickshadowsocks.de/sitemap.html</loc>
+        <lastmod>2017-11-22T11:25:40+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>https://oneclickshadowsocks.de/amp.html</loc>
+        <lastmod>2017-11-22T11:25:40+00:00</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+</urlset>

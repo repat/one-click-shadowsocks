@@ -9,7 +9,7 @@
 ## Digital Ocean
 > DigitalOcean, Inc. is an American cloud infrastructure provider headquartered in New York City with data centers worldwide.
 
--- https://en.wikipedia.org/wiki/DigitalOcean
+-- https://en.wikipedia.org/wiki/DigitalOcean (2017-11-22)
 
 ## What is One Click Shadowsocks?
 
@@ -38,9 +38,7 @@ This is not a super secure method, please don't use this in production or when y
 ## Improvements
 * Change password to randomly generated
 * Obscurification
-* Small webserver that shows login data
-** Let's encrypt
-** htaccess
+* Small webserver that shows login data (htaccess + [letsencrypt.org](https://letsencrypt.org "let's encrypt"))
 
 ## Contact
 * Homepage: https://repat.de
