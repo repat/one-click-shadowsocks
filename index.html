@@ -59,7 +59,7 @@
     </div>
     <script type="text/javascript">
         function createDroplet(region, size, accessToken) {
-            console.log(Setting up a " " + size + " Droplet in " + region);
+            console.log("Setting up a " + size + " Droplet in " + region);
                
             $.post({
                 url: "https://api.digitalocean.com/v2/droplets/",
@@ -76,7 +76,7 @@
                 "size" : size,
                 "image" : "ubuntu-16-04-x64",
                 "ipv6": true,
-                "user_data" : "#!/bin/bash\nwget https://repat.de/setup.sh && chmod +x setup.sh && sh setup.sh"                       
+                "user_data" : "#!/bin/bash\nwget -y https://raw.githubusercontent.com/repat/one-click-shadowsocks/master/setup.sh && chmod +x setup.sh && sh setup.sh"                       
                 }),
                 success: function (response) {
                     console.log(response);
