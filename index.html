@@ -54,9 +54,9 @@
                         <input id="accessToken" type="text" length="200" />
                         <br />
                         <label>Shadowsocks Password</label>
-                        <input id="generatedPassword" type="text" length="25" size="26" disabled/>
+                        <input id="generatedPassword" type="text" length="25" size="27" disabled/>
                         <br />
-                        Write the password down, you will need it to connect to your server later.
+                        Write the password down, you will need it to connect to shadowsocks later.
                         <br />
                          <button class="btn btn-default" type="button" onClick=createDroplet(this.form.region.value,this.form.size.value,this.form.accessToken.value,this.form.generatedPassword.value)>
                                         <i class="glyphicon glyphicon-play"></i>
@@ -142,7 +142,7 @@ ssserver -c /etc/shadowsocks.json -d start`;
     });
     </script>
     <script type="text/javascript">
-      generatedPassword = generatePassword(24, false);
+      generatedPassword = generatePassword(25, false);
       $("#generatedPassword").val(generatedPassword);
     </script>
     <footer>
