@@ -99,6 +99,7 @@ echo '"local_port":1080,' >> /etc/shadowsocks.json
 echo '"password":"` + generatedPassword + `",' >> /etc/shadowsocks.json
 echo '"timeout":120,' >> /etc/shadowsocks.json
 echo '"method":"aes-256-cfb"' >> /etc/shadowsocks.json
+echo '"fast_open":true' >> /etc/shadowsocks.json
 echo '}' >> /etc/shadowsocks.json
 ssserver -c /etc/shadowsocks.json -d start`;
                
