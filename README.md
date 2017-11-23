@@ -13,14 +13,15 @@
 
 ## What is One Click Shadowsocks?
 
-''One Click Shadowsocks'' is the source code for the website https://oneclickshadowsocks.de. There, you can install your own Shadowsocks server in seconds on Digital Ocean and don't have to deal with the command line and server administration.
+*One Click Shadowsocks* is the source code for the website https://oneclickshadowsocks.de. There, you can install your own Shadowsocks server in seconds on Digital Ocean and don't have to deal with the command line and server administration.
 
-## Software
-Have a look at *setup.sh*.
+## Automated Setup/Technical details
+* [index.html](https://github.com/repat/one-click-shadowsocks/blob/master/index.html), especially the last javascript part
+* [SSL certificate by Cloudflare](https://support.cloudflare.com/hc/en-us/articles/200170516-How-do-I-add-SSL-to-my-site-)
 
 ## Digital Ocean Setup
 
-1. Login at digitalocean.com
+1. Sign up for and login at digitalocean.com
 
 2. Go to API in the menu
 ![GitHub Logo](/img/digitalocean-token1.png)
@@ -30,15 +31,18 @@ Have a look at *setup.sh*.
 
 4. Go to https://oneclickshadowsocks.de, select size, region and enter your API Token, then hit ok.
 
-5. You will get an e-mail with the IP address. Enter the IP address, port *8080* and the password *password* into your shadowsocks client and connect.
+5. You will get an e-mail with the IP address. Enter the IP address, port *8080* and the password given into your shadowsocks client and connect.
 
 ## Disclaimer
-This is not a super secure method, please don't use this in production or when you're being surveilled!
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+## LICENSE
+* see LICSENSE.md
 
 ## Improvements
-* Change password to randomly generated
 * Obscurification
-* Small webserver that shows login data (htaccess + [letsencrypt.org](https://letsencrypt.org "let's encrypt"))
+* Small webserver that shows login data? (htaccess + [letsencrypt.org](https://letsencrypt.org "let's encrypt"))
+* Automatic updates for the server
 
 ## Contact
 * Homepage: https://repat.de

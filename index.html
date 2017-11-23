@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="de">
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="/js/password-generator.min.js"></script>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta name="author" content="repat">
     <meta name="description" content="Set up a shadowsocks server in under 1 minute. No technical knowledge needed!">
     <meta name="robots" content="index, follow">
@@ -53,17 +53,54 @@
                         <label>API Token</label>
                         <input id="accessToken" type="text" length="200" />
                         <br />
-                         <button class="btn btn-default" type="button" onClick=createDroplet(this.form.region.value,this.form.size.value,this.form.accessToken.value)>
+                        <label>Shadowsocks Password</label>
+                        <input id="generatedPassword" type="text" length="25" size="26" disabled/>
+                        <br />
+                        Write the password down, you will need it to connect to your server later.
+                        <br />
+                         <button class="btn btn-default" type="button" onClick=createDroplet(this.form.region.value,this.form.size.value,this.form.accessToken.value,this.form.generatedPassword.value)>
                                         <i class="glyphicon glyphicon-play"></i>
                          </button>
                     </form>
                 </div>
             </div>
+            <div class="row">
+              <h2><i class="glyphicon glyphicon-arrow-down" id="fold_button"></i> Instructions</h2>
+              <div class="col-md-12" id="instructions" style="display:none">
+                <ol>
+                  <li>Sign up for and login at digitalocean.com</li>
+                  <li>Go to API in the menu<br />
+                    <img src="img/digitalocean-token1.png" width=640 height=206 alt="API Menu at DigitalOcean"/>
+                  </li>
+                  <li>Generate a token and write it down. You will not see it again.<br />
+                    <img src="img/digitalocean-token2.png" width=640 height=420 alt="Create an API Token at DigitalOcean"/>
+                  </li>
+                  <li>On this page, select size, region and enter your API Token, then hit ok.</li>
+                  <li>You will get an e-mail with the IP address in the format <em>XXX.XXX.XXX.XXX</em>, X being a number from 0 to 255.</li>
+                  <li>Enter the IP address, port <em>8080</em> and the password shown into your shadowsocks client and connect.</li>
+                </ol>
+              </div>
+            </div>
         </div>
     </div>
     <script type="text/javascript">
-        function createDroplet(region, size, accessToken) {
-            console.log("Setting up a " + size + " Droplet in " + region);
+        function createDroplet(region, size, accessToken, generatedPassword) {
+            console.log("Setting up a " + size + " Droplet in " + region + " and shadowsocks password: " + generatedPassword);
+
+            userData = `#!/bin/bash
+apt-get -y update && sudo apt-get upgrade -y 
+apt-get -y install python-pip 
+pip install --update pip 
+pip install shadowsocks 
+echo '{' > /etc/shadowsocks.json
+echo '"server":["[::0]", "0.0.0.0"],' >> /etc/shadowsocks.json
+echo '"server_port":8080,' >> /etc/shadowsocks.json
+echo '"local_port":1080,' >> /etc/shadowsocks.json
+echo '"password":"` + generatedPassword + `",' >> /etc/shadowsocks.json
+echo '"timeout":120,' >> /etc/shadowsocks.json
+echo '"method":"aes-256-cfb"' >> /etc/shadowsocks.json
+echo '}' >> /etc/shadowsocks.json
+ssserver -c /etc/shadowsocks.json -d start`;
                
             $.post({
                 url: "https://api.digitalocean.com/v2/droplets/",
@@ -80,11 +117,10 @@
                 "size" : size,
                 "image" : "ubuntu-16-04-x64",
                 "ipv6": true,
-                "user_data" : "#!/bin/bash\nwget https://raw.githubusercontent.com/repat/one-click-shadowsocks/master/setup.sh && chmod +x setup.sh && sh setup.sh"                       
+                "user_data" : userData                       
                 }),
                 success: function (response) {
                     console.log(response);
-                    //alert(response);
                     alert("Droplet created.");
                 },
                 error: function (xhr, status) {
@@ -94,8 +130,23 @@
             });
         };
     </script>
+    <script type="text/javascript">
+      $("#fold_button").click(function() {
+        if ($('#instructions').css('display') === 'none') {
+            $("#instructions").slideDown("slow");
+            $("#fold_button").attr("class", "glyphicon glyphicon-arrow-up");
+        } else {
+            $("#instructions").slideUp("fast");
+            $("#fold_button").attr("class", "glyphicon glyphicon-arrow-down");
+        }
+    });
+    </script>
+    <script type="text/javascript">
+      generatedPassword = generatePassword(24, false);
+      $("#generatedPassword").val(generatedPassword);
+    </script>
     <footer>
-        <a href="sitemap.html">Sitemap</a>
+        <a href="sitemap.html">Sitemap</a> - made in 2017 by <a href="https://repat.de">repat</a> 
     </footer>
   </body>
 </html>

@@ -14,6 +14,7 @@
     }
     </script>
     <script async src="https://cdn.ampproject.org/v0.js"></script>
+    <script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
   </head>
   <body>
     <div>
@@ -22,6 +23,46 @@
     <h1>One-Click Shadowsocks on DigitalOcean</h1>
     <p>No AMP Version available yet.</p>
     <p>Please use the <a href="index.html">desktop version</a> for now.</p>
+
+    <form method="post"
+    action-xhr="https://api.digitalocean.com/v2/droplets/"
+    target="_top">
+    <fieldset>
+      <label>
+        <span>Region:</span>
+        <input type="text"
+          name="region"
+          required>
+      </label>
+      <br>
+      <label>
+        <span>Size:</span>
+        <input type="email"
+          name="size"
+          required>
+      </label>
+      <br>
+      <label>
+        <span>Size:</span>
+        <input type="email"
+          name="size"
+          required>
+      </label>
+      <br>
+      <input type="submit"
+        value="Subscribe">
+    </fieldset>
+    <div submit-success>
+      <template type="amp-mustache">
+        Droplet created!
+      </template>
+    </div>
+    <div submit-error>
+      <template type="amp-mustache">
+        Droplet creation failed!
+      </template>
+    </div>
+  </form>
     <footer>
         <a href="sitemap.html">Sitemap</a>
     </footer>
