@@ -24,9 +24,11 @@
 1. Sign up for and login at digitalocean.com
 
 2. Go to API in the menu
+
 ![GitHub Logo](/img/digitalocean-token1.png)
 
 3. Generate a token and write it down. You will not see it again.
+
 ![GitHub Logo](/img/digitalocean-token2.png)
 
 4. Go to https://oneclickshadowsocks.de, select size, region and enter your API Token, then hit ok.
@@ -44,6 +46,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 * [Optimizing Shadowsocks](https://github.com/shadowsocks/shadowsocks/wiki/Optimizing-Shadowsocks)
 * Small webserver that shows login data? (htaccess + [letsencrypt.org](https://letsencrypt.org "let's encrypt"))
 * Automatic updates for the server
+* Securing the server
 
 ## FAQ
 > Why not libev/Go?
