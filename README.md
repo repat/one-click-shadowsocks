@@ -31,7 +31,7 @@
 
 4. Go to https://oneclickshadowsocks.de, select size, region and enter your API Token, then hit ok.
 
-5. You will get an e-mail with the IP address. Enter the IP address, port *8080* and the password given into your shadowsocks client and connect.
+5. You will get an e-mail with the IP address. The password in the email is not your shadowsocks passoword! Enter the IP address, port *8080* and the password given on the page into your shadowsocks client and connect.
 
 ## Disclaimer
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
@@ -39,8 +39,9 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 ## LICENSE
 * see LICENSE.md
 
-## Improvements
+## TODO
 * Obscurification
+* [Optimizing Shadowsocks](https://github.com/shadowsocks/shadowsocks/wiki/Optimizing-Shadowsocks)
 * Small webserver that shows login data? (htaccess + [letsencrypt.org](https://letsencrypt.org "let's encrypt"))
 * Automatic updates for the server
 

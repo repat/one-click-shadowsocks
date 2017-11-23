@@ -77,7 +77,7 @@
                   </li>
                   <li>On this page, select size, region and enter your API Token, then hit ok.</li>
                   <li>You will get an e-mail with the IP address in the format <em>XXX.XXX.XXX.XXX</em>, X being a number from 0 to 255.</li>
-                  <li>Enter the IP address, port <em>8080</em> and the password shown into your shadowsocks client and connect.</li>
+                  <li>Enter the IP address, port <em>8080</em> and the password shown above (not in the email!) into your shadowsocks client and connect.</li>
                 </ol>
               </div>
             </div>
@@ -101,6 +101,7 @@ echo '"timeout":120,' >> /etc/shadowsocks.json
 echo '"method":"aes-256-cfb",' >> /etc/shadowsocks.json
 echo '"fast_open":true' >> /etc/shadowsocks.json
 echo '}' >> /etc/shadowsocks.json
+echo 3 > /proc/sys/net/ipv4/tcp_fastopen
 ssserver -c /etc/shadowsocks.json -d start`;
                
             $.post({
