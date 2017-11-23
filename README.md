@@ -45,6 +45,22 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 * Small webserver that shows login data? (htaccess + [letsencrypt.org](https://letsencrypt.org "let's encrypt"))
 * Automatic updates for the server
 
+## FAQ
+> Why not libev/Go?
+Will maybe come in the future.
+
+> Why .de domain?
+It's [cheap](https://do.de)
+
+> What if I want to change something?
+You can log onto the server via SSH at any time. Use the password from the e-mail.
+
+> The password is not working!
+Are you trying to use the SSH password from the e-mail? Make sure you use the password given on the page when you set it up. If you lost it, there is currently no way of recovering it.
+
+> Shadowsocks doesn't connect!
+Have a look at the log files, double check IP address, port and password. See if the server was created at DigitalOcean in the backend.
+
 ## Contact
 * Homepage: https://repat.de
 * e-mail: repat@repat.de
