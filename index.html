@@ -12,6 +12,7 @@
     <script src="/js/password-generator.min.js"></script>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <!--<link rel="amphtml" href="amp.html" />-->
+     <script src="https://cdn.ampproject.org/v0.js" async></script>
   </head>
   <body>
     <div class="container">
@@ -77,7 +78,7 @@
                   </li>
                   <li>On this page, select size, region and enter your API Token, then hit ok.</li>
                   <li>You will get an e-mail with the IP address in the format <em>XXX.XXX.XXX.XXX</em>, X being a number from 0 to 255.</li>
-                  <li>Enter the IP address, port <em>8080</em> and the password shown above (not in the email!) into your shadowsocks client and connect.</li>
+                  <li>Enter the IP address, port <em>8080</em>, the password shown above (not in the email!), the encryption method <em>aes-256-cfb</em> (should be preselected) into your shadowsocks client and connect.</li>
                 </ol>
 
                 <h3>FAQ</h3>
@@ -108,7 +109,14 @@
 
             userData = `#!/bin/bash
 apt-get -y update && sudo apt-get upgrade -y 
-apt-get -y install python-pip python-m2crypto fail2ban
+apt-get -y install python-pip python-m2crypto fail2ban update-notifier-common unattended-upgrades
+# apt-get -y  software-properties-common
+# add-apt-repository ppa:max-c-lv/shadowsocks-libev -y
+# apt-get -y install shadowsocks-libev
+echo 'APT::Periodic::Update-Package-Lists "1";' > /etc/apt/apt.conf.d/20auto-upgrades
+echo 'APT::Periodic::Unattended-Upgrade "1";' >> /etc/apt/apt.conf.d/20auto-upgrades
+echo 'Unattended-Upgrade::Automatic-Reboot "true";' >> /etc/apt/apt.conf.d/50unattended-upgrades
+echo 'Unattended-Upgrade::Remove-Unused-Dependencies "true";' >> /etc/apt/apt.conf.d/50unattended-upgrades
 pip install --update pip 
 pip install shadowsocks 
 echo '{' > /etc/shadowsocks.json
