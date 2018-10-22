@@ -60,14 +60,14 @@ async></script> -->
                         <br />
                         Write the password down, you will need it to connect to shadowsocks later.
                         <br />
-                         <button class="btn btn-default" type="button" onClick=createDroplet(this.form.region.value,this.form.size.value,this.form.accessToken.value,this.form.generatedPassword.value)>
+                         <button aria-label="Create Droplet" class="btn btn-default" type="button" onClick=createDroplet(this.form.region.value,this.form.size.value,this.form.accessToken.value,this.form.generatedPassword.value)>
                                         <i class="glyphicon glyphicon-play"></i>
                          </button>
                     </form>
                 </div>
             </div>
             <div class="row">
-              <h2 id="fold_button" class="glyphicon glyphicon-arrow-down"> Instructions</h2>
+              <h2 aria-label="Instructions" id="fold_button" class="glyphicon glyphicon-arrow-down"> Instructions</h2>
               <div class="col-md-12" id="instructions" style="display:none">
                 <ol>
                   <li>Sign up for and login at digitalocean.com</li>
